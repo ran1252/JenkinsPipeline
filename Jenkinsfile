@@ -3,6 +3,7 @@ pipeline {
     agent any
     
     stages {
+        // Here i am installing all dependencies needed to run the app
         stage('Building') {
             steps {
             
@@ -13,6 +14,7 @@ pipeline {
             }
         }
         stage('Testing') {
+              //Testing the app
             steps {
                 bat '''
                     pytest
@@ -20,12 +22,13 @@ pipeline {
             }
         }
         
-        stage('Build and Push') {
+        stage('Deploying') {
             steps {
                 bat '''
-                    docker build -t myapp .
-                    
-                    docker run -p 5000:5000 -d myapp
+                    // Build docker image <app-jen>
+                    docker build -t app-jen .
+                    //Run a docker container from the image
+                    docker run -p 5000:5000 -d app-jen
                 '''
             }
         }
