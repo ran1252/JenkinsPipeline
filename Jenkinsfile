@@ -27,7 +27,7 @@ pipeline {
                     docker build -t myapp .
                     
                     # Push the image to Docker Hub
-                    docker run myapp
+                    docker run -p 5000:5000 -d myapp
                 '''
             }
         }
