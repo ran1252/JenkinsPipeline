@@ -24,10 +24,10 @@ pipeline {
             steps {
                 bat '''
                     # Build the Docker image
-                    docker build -t raniaelh/jenkinsfile .
+                    docker build -t myapp .
                     
                     # Push the image to Docker Hub
-                    docker run raniaelh/jenkinsfile
+                    docker run myapp
                 '''
             }
         }
