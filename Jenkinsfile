@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                git branch: 'master', url: 'https://github.com/<username>/<repo>.git'
+                git branch: 'main', url: 'https://github.com/ran1252/JenkinsPipeline.git'  
                 sh '''
                     # run build commands
                     pip install -r requirements.txt
