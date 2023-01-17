@@ -6,8 +6,9 @@ pipeline {
             steps {
             
                 bat '''
-                    virtualenv venv && . venv/bin/activate && pip install -r requirements.txt
-                '''
+                      C:\\Python\\Python38\\Scripts\\pip.exe install -r requirements.txt
+                 '''
+
             }
         }
         
