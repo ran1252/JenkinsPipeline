@@ -18,6 +18,16 @@ pipeline {
                 '''
             }
         }
+        stage('Deploying') {
+            steps {
+                sh '''
+                    # build the Docker image
+                    docker build -t JenkinsImage .
+                    # run the Docker container
+                    docker run -p 5000:5000 JenkinsImage
+                '''
+            }
+        }
         
     }
     
