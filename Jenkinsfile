@@ -23,9 +23,9 @@ pipeline {
             steps {
                 sh '''
                     # build the Docker image
-                    docker build -t <image_name> .
+                    docker build -t jenkinsimage .
                     # run the Docker container
-                    docker run -p 5000:5000 <image_name>
+                    docker run -p 5000:5000 jenkinsimage
                 '''
             }
         }
@@ -34,7 +34,7 @@ pipeline {
         success {
             sh '''
                 # Use Ngrok to allow access to Jenkins on localhost by GitHub
-                ngrok http <jenkins_port>
+                ngrok http 8080
             '''
         }
     }
