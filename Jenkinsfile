@@ -5,7 +5,7 @@ pipeline {
         stage('Building') {
             steps {
             
-                bash '''
+                bat '''
                     # run build commands
                     pip install -r requirements.txt
                 '''
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                bash '''
+                bat '''
                     # run test commands
                     python -m unittest
                 '''
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploying') {
             steps {
-                bash '''
+                bat '''
                     # build the Docker image
                     docker build -t jenkinsimage .
                     # run the Docker container
