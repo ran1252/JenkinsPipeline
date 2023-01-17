@@ -6,7 +6,6 @@ pipeline {
             steps {
             
                 bat '''
-                    sh 'echo "building the repo"'
                     # run build commands
                     pip install -r requirements.txt
                 '''
@@ -16,7 +15,7 @@ pipeline {
     }
     post {
         success {
-            bash '''
+            bat '''
                 # Use Ngrok to allow access to Jenkins on localhost by GitHub
                 ngrok http 8080
             '''
