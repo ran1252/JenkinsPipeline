@@ -13,11 +13,5 @@ pipeline {
         }
         
     }
-    post {
-        success {
-            bat '''
-                ngrok http 8080
-            '''
-        }
-    }
+    
 }
