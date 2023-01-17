@@ -22,9 +22,9 @@ pipeline {
             steps {
                 sh '''
                     # build the Docker image
-                    docker build -t JenkinsImage .
+                    docker build -t raniaelh/JenkinsImage .
                     # run the Docker container
-                    docker run -p 5000:5000 JenkinsImage
+                    docker run -p 5000:5000 raniaelh/JenkinsImage
                 '''
             }
         }
