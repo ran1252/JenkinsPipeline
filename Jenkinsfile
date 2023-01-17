@@ -8,7 +8,6 @@ pipeline {
                 sh '''
                     # run build commands
                     pip install -r requirements.txt
-                    python app.py install
                 '''
             }
         }
@@ -16,7 +15,7 @@ pipeline {
             steps {
                 sh '''
                     # run test commands
-                    pytest
+                    python -m unittest
                 '''
             }
         }
