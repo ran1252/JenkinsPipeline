@@ -23,10 +23,8 @@ pipeline {
         stage('Build and Push') {
             steps {
                 bat '''
-                    # Build the Docker image
                     docker image build -t myapp .
                     
-                    # Push the image to Docker Hub
                     docker run -p 5000:5000 -d myapp
                 '''
             }
