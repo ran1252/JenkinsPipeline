@@ -25,7 +25,7 @@ pipeline {
          stage('Login to Docker Hub') {
             steps {
                 bat '''
-                    echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                    echo %DOCKER_PASSWORD% | docker login --username %DOCKER_USERNAME% --password-stdin
                 '''
             }
         }
@@ -33,10 +33,10 @@ pipeline {
             steps {
                 bat '''
                     # Build the Docker image
-                    docker build -t raniaelh/jenkinimage .
+                    docker build -t raniaelh/jenkinsfile .
                     
                     # Push the image to Docker Hub
-                    docker push raniaelh/jenkinimage
+                    docker push raniaelh/jenkinsfile
                 '''
             }
         }
