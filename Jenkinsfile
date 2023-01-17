@@ -6,7 +6,7 @@ pipeline {
             steps {
             
                 bat '''
-                    pip install --user -r requirements.txt
+                    virtualenv venv && . venv/bin/activate && pip install -r requirements.txt
                 '''
             }
         }
