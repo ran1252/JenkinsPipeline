@@ -1,10 +1,7 @@
 
 pipeline {
     agent any
-    environment {
-        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
-        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
-    }
+    
     stages {
         stage('Building') {
             steps {
@@ -21,6 +18,10 @@ pipeline {
                     pytest
                 '''
             }
+        }
+        environment {
+        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         }
          stage('Login to Docker Hub') {
             steps {
