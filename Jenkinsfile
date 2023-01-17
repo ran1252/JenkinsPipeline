@@ -33,10 +33,10 @@ pipeline {
             steps {
                 bat '''
                     # Build the Docker image
-                    docker build -t raniaelh/mlopsimage .
+                    docker build -t raniaelh/jenkinimage .
                     
                     # Push the image to Docker Hub
-                    docker push raniaelh/mlopsimage
+                    docker push raniaelh/jenkinimage
                 '''
             }
         }
