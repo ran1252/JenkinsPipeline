@@ -1,6 +1,10 @@
 
 pipeline {
     agent any
+    environment {
+        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+    }
     stages {
         stage('Building') {
             steps {
@@ -18,13 +22,21 @@ pipeline {
                 '''
             }
         }
-        stage('Deploying') {
+         stage('Login to Docker Hub') {
             steps {
-                sh '''
-                    # build the Docker image
-                    docker build -t raniaelh/JenkinsImage .
-                    # run the Docker container
-                    docker run -p 5000:5000 raniaelh/JenkinsImage
+                bat '''
+                    echo ${DOCKER_PASSWORD} | docker login --username ${DOCKER_USERNAME} --password-stdin
+                '''
+            }
+        }
+        stage('Build and Push') {
+            steps {
+                bat '''
+                    # Build the Docker image
+                    docker build -t raniaelh/mlopsimage .
+                    
+                    # Push the image to Docker Hub
+                    docker push raniaelh/mlopsimage
                 '''
             }
         }
@@ -32,3 +44,7 @@ pipeline {
     }
     
 }
+
+
+
+
