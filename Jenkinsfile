@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                git branch: 'origin', url: 'https://github.com/ran1252/JenkinsPipeline.git'  
-                sh '''
+            
+                bash '''
                     # run build commands
                     pip install -r requirements.txt
                 '''
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                sh '''
+                bash '''
                     # run test commands
                     python -m unittest
                 '''
@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Deploying') {
             steps {
-                sh '''
+                bash '''
                     # build the Docker image
                     docker build -t jenkinsimage .
                     # run the Docker container
@@ -32,7 +32,7 @@ pipeline {
     }
     post {
         success {
-            sh '''
+            bash '''
                 # Use Ngrok to allow access to Jenkins on localhost by GitHub
                 ngrok http 8080
             '''
