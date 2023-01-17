@@ -6,7 +6,7 @@ pipeline {
             steps {
             
                 bat '''
-                      C:\Users\Rania\AppData\Local\Programs\Python\Python310\Scripts\pip.exe install -r requirements.txt
+                      pip install -r requirements.txt
                  '''
 
             }
