@@ -23,11 +23,11 @@ pipeline {
         }
         
         stage('Deploying') {
+                  // Build docker image app-jen
+                  //Run a docker container from the image
             steps {
                 bat '''
-                    // Build docker image <app-jen>
                     docker build -t app-jen .
-                    //Run a docker container from the image
                     docker run -p 5000:5000 -d app-jen
                 '''
             }
