@@ -37,7 +37,7 @@ pipeline {
                     docker build -t raniaelh/jenkinsfile .
                     
                     # Push the image to Docker Hub
-                    docker push raniaelh/jenkinsfile
+                    docker run raniaelh/jenkinsfile
                 '''
             }
         }
